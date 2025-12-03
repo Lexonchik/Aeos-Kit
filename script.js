@@ -36,7 +36,7 @@ const mouseData = {
 
 // ELEMENTS
 const ElMapContainer = document.getElementById("map-container");
-const ElMap = document.getElementById("map");
+const ElMaps = Array.from(document.getElementsByClassName("map"));
 const ElDiscordUsername = document.getElementById("discord-username");
 const ElDiscordTooltip = document.getElementById("discord-tooltip");
 const ElMarkers = document.getElementById("markers");
@@ -177,7 +177,8 @@ function wheelTime(e) {
  * Initialise le canvas en définissant sa largeur et sa hauteur en fonction de la taille de l'élément de la carte.
  */
 function initCanvas() {
-  const mapRect = ElMap.getBoundingClientRect();
+  const map = ElMaps.find(el=> el.classList.contains("display"));
+  const mapRect = map.getBoundingClientRect();
   Ctx.canvas.width = mapRect.width;
   Ctx.canvas.height = mapRect.height;
   ElCanvas.addEventListener("click", writeText);
@@ -932,4 +933,15 @@ function setSelected(elem) {
     if (child.classList.contains("selected")) child.classList.remove("selected");
   }
   elem.classList.add("selected");
+}
+
+function changeMap() {
+  const map = ElMaps.find(el=> el.classList.contains("display"));
+  let currentMapIndex = maps.indexOf(map);
+  if (map != undefined && maps.length>1) {
+    map.classList.remove("display");
+    currentMapIndex = (currentMapIndex + 1) % maps.length;
+    maps[currentMapIndex].classList.add("display");
+  }
+  
 }
