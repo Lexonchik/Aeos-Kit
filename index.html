@@ -12,6 +12,8 @@
 	<!-- MAP BACKGROUND-->
 	<div id="map-container" class="map-container">
 		<img id="map" class="map" src="ressources/map_background/map.png">
+		<img id="map" class="map" src="ressources/map_background/groudon_map.png">
+		<img id="map" class="map display" src="ressources/map_background/rayquaza_map.png">
 		<canvas id="canvas" class="canvas"></canvas>
 		<div id="markers"></div>
 	</div>
@@ -28,6 +30,9 @@
 			<!-- RESET ZOOM BUTTON-->
 			<div onclick="resetZoomMap()" class="zoombtn">
 				<img id="reset-zoom" class="reset-zoom" src="ressources/icons/reset_zoom.png">
+			</div>
+			<div onclick="changeMap()" class="zoombtn">
+				<img id="change-map" class="change-map" src="ressources/icons/color.png">
 			</div>
 			<div class="drawtool">
 				<div id="pencil-tool" class="pencil-tool" onclick="handleDrawing(event)">
